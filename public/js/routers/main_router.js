@@ -16,8 +16,8 @@ define(["backbone", "views/BarView", "views/ChartView", "jquery"], function(Back
 
         },
         renderChartView : function(options){
-            var chartOption = window.localStorage ? window.localStorage.getItem("chart") : "line";
-            var soldOption = window.localStorage ? window.localStorage.getItem("sold") : "sold";
+            var chartOption = window.localStorage && window.localStorage.getItem("chart")? window.localStorage.getItem("chart") : "line";
+            var soldOption = window.localStorage && window.localStorage.getItem("sold") ? window.localStorage.getItem("sold") : "sold";
             var url = ["/", soldOption].join("");
             var router = this;
             $.ajax({
@@ -34,8 +34,8 @@ define(["backbone", "views/BarView", "views/ChartView", "jquery"], function(Back
         },
 
         renderBarView : function(){
-            var chartOption = window.localStorage ? window.localStorage.getItem("chart") : "line";
-            var soldOption = window.localStorage ? window.localStorage.getItem("sold") : "sold";
+            var chartOption = window.localStorage && window.localStorage.getItem("chart") ? window.localStorage.getItem("chart") : "line";
+            var soldOption = window.localStorage && window.localStorage.getItem("sold") ? window.localStorage.getItem("sold") : "sold";
             var router = this;
             var barView = new BarView({router : router, chartOption: chartOption, soldOption: soldOption});
         }
