@@ -55,7 +55,7 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
                     var eachArray = groupByFlower[flowerName];
                     if(labels.length === 0) labels = eachArray.map(function(d){return d.date});
                     obj.data = eachArray.map(function(d){
-                        return d.quantity;
+                        return parseInt(d.quantity,10);
                     });
                     obj.title = flowerName;
                     obj = _.extend(obj, style);
