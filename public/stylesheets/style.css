@@ -21,7 +21,7 @@ button {
     background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 97%,#f5f6f6 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 ); /* IE6-9 */
     cursor: pointer;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     width: 110px;
     -webkit-transition: opacity 0.3s linear;
     -webkit-touch-callout: none;
@@ -30,7 +30,8 @@ button {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    opacity: 0.8;
+    opacity: 1;
+	position: relative;
 
 }
 
@@ -46,15 +47,32 @@ button.active{
 }
 
 button:hover {
-    opacity : 1;
+    opacity : 0.8;
 }
 button:focus {
     outline : none;
 }
 
+button:first-child {
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-right: lightgray 1px solid;
+}
+
+button:last-child {
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-left: lightgray 1px solid;
+	left : -5px;
+}
+
 button span {
     color: whitesmoke;
     text-shadow: black 0.1em 0.1em 0.2em
+}
+button.active span {
+	color : black;
+	text-shadow: lightgray 0.1em 0.1em 0.2em;
 }
 
 nav > div {
@@ -84,5 +102,9 @@ legend .legend-title {
 
 .chartContainer{
 	display: inline-block;
-	margin-left: 30px;
+	margin: 20px 40px;
+	padding: 30px;
+	border: whitesmoke 1px solid;
+	border-radius: 8px;
+	-webkit-box-shadow: lightgrey 0.4em 0.3em;
 }
