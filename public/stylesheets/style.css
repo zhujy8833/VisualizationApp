@@ -64,6 +64,7 @@ nav > div {
 nav .chartOption {
     text-transform: uppercase;
 }
+
 legend {}
 
 legend > div {
@@ -79,4 +80,9 @@ legend .legend-block{
 
 legend .legend-title {
 
+}
+
+.chartContainer{
+	display: inline-block;
+	margin-left: 30px;
 }

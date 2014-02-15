@@ -42,9 +42,7 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
             renderVisualization : function() {
                 var view = this;
                 var target;
-                target = view.$el.find("#myChart") ? view.$el.find("#myChart")[0] : null;
-                //Helper.init(target);
-                var visualization = new Visualization({target : target});
+				var visualization;
                 var groupByFlower = _.groupBy(view.data, function(d){ return d.flower});
                 var values = [];
                 var labels = [];
@@ -66,13 +64,30 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
                     labels : labels,
                     data : values
                 };
-                if(visualization) {
-                    if(view.chartOption === 'line'){
-                        visualization.renderLineChart(sendingOptions);
-                    } else if(view.chartOption === 'bar') {
-                        visualization.renderBarChart(sendingOptions);
-                    }
-                }
+				if(view.chartOption !== 'both') {
+					target = view.$el.find(".myChart") ? view.$el.find(".myChart")[0] : null;
+					var visualization = new Visualization({target : target});
+					
+					if(visualization) {
+						if(view.chartOption === 'line'){
+	                        visualization.renderLineChart(sendingOptions);
+	                    } else if(view.chartOption === 'bar') {
+	                        visualization.renderBarChart(sendingOptions);
+	                    }
+					}
+				} else {
+					//draw both bar and line
+					target = view.$el.find(".myChart") ? view.$el.find(".myChart") : [];
+					_.each(target, function(t){
+						var visualization = new Visualization({target : t});
+						if($(t).data("choice") === 'line') {
+							visualization.renderLineChart(sendingOptions);
+						} else if($(t).data("choice") === 'bar'){
+							visualization.renderBarChart(sendingOptions);
+						}
+					});
+					
+				}
                 view.dataInfo = sendingOptions.data;
                 var legendFld = view.$el.find('legend');
                 _.each(view.dataInfo, function(data){
@@ -83,8 +98,13 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
 			render : function(){
 				var view = this;
 				$("#container").html(view.$el);
-
-				view.$el.html(Mustache.render(template));
+				if(view.chartOption != 'both') {
+					view.$el.html(Mustache.render(template, {}));
+				} else {
+					view.$el.html("")
+							.append(Mustache.render(template, {choice : "line"}))
+						    .append(Mustache.render(template, {choice : "bar" }));
+				}
 				return view;
 			}
 		});
