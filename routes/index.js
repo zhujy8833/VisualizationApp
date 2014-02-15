@@ -26,7 +26,7 @@ var getByFields = function(fields) {
 }
 
 exports.index = function(req, res){
-    res.render('index', { title: 'Express' });
+    res.render('index');
 };
 
 exports.allUnsold = function(req, res) {
