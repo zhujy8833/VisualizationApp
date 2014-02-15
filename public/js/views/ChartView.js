@@ -64,6 +64,7 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
                     labels : labels,
                     data : values
                 };
+
 				if(view.chartOption !== 'both') {
 					target = view.$el.find(".myChart") ? view.$el.find(".myChart")[0] : null;
 					var visualization = new Visualization({target : target});
@@ -89,7 +90,8 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
 					
 				}
                 view.dataInfo = sendingOptions.data;
-                var legendFld = view.$el.find('legend');
+                view.$el.append('<legend>');
+				var legendFld = view.$el.find("legend");
                 _.each(view.dataInfo, function(data){
                     legendFld.append('<div><div class="legend-block" style="background-color:' + data.fillColor + '"></div><span class="legend-title">' +data.title+'</span></div>')
                 });
