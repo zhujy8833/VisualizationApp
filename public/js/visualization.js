@@ -42,5 +42,4 @@ define(['chart','jquery',"underscore"],function(ChartLib, $, _){
     };
 
     return Visualization;
-
 });

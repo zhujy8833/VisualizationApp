@@ -35,7 +35,6 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/b
                 if(window.localStorage) {
                     window.localStorage.setItem("chart", choice);
                 }
-                //view.router.navigate("", {trigger:true});
                 view.router.renderChartView();
             },
             render : function() {
@@ -44,9 +43,7 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/b
 
                 view.$el.html(Mustache.render(template, {chartOption : view.chartOption}));
                 _.each(view.$el.find("select#chart-choice option"), function(option){
-                   //  if($(option).val() == view.chartOption) {
-                         option.selected = $(option).val() == view.chartOption;
-                     //}
+                	option.selected = $(option).val() == view.chartOption;
                 });
 
                 view.$el.find('.sold-field-btn button').removeClass('active');
