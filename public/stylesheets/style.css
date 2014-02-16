@@ -1,28 +1,39 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(47%,rgba(246,246,246,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+background-repeat: no-repeat;
 }
 
 a {
   color: #00B7FF;
 }
 
-nav {
-
+.topBar {
+    margin: 0 auto;
+    width: 85%;
 }
 
 button {
     background: #f5f6f6; /* Old browsers */
-    background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 97%, #f5f6f6 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(97%,#dddfe3), color-stop(100%,#f5f6f6)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 97%,#f5f6f6 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 97%,#f5f6f6 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 97%,#f5f6f6 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 97%,#f5f6f6 100%); /* W3C */
+    background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 90%, #f5f6f6 75%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(90%,#dddfe3), color-stop(75%,#f5f6f6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 90%,#f5f6f6 75%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 90%,#f5f6f6 75%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 90%,#f5f6f6 75%); /* IE10+ */
+    background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 90%,#f5f6f6 75%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 ); /* IE6-9 */
     cursor: pointer;
     /*border-radius: 8px;*/
-    width: 110px;
+    width: 100px;
+    height: 30px;
     -webkit-transition: opacity 0.3s linear;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -56,19 +67,28 @@ button:focus {
 button:first-child {
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
-	border-right: lightgray 1px solid;
+	/*border-right: gray 1px solid;*/
 }
 
 button:last-child {
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
-	border-left: lightgray 1px solid;
-	left : -5px;
+	/*border-left: gray 1px solid;*/
+	left : -4px;
+}
+
+button:first-child.active {
+    border-right: black 2px inset;
+}
+
+button:last-child.active {
+    border-left: black 2px inset;
 }
 
 button span {
     color: whitesmoke;
-    text-shadow: black 0.1em 0.1em 0.2em
+    text-shadow: black 0.1em 0.1em 0.2em;
+    font-size: 1.4em;
 }
 button.active span {
 	color : black;
@@ -79,15 +99,26 @@ nav > div {
     display: inline-block;
 }
 
+nav select {
+    margin-left: 20%;
+    margin-top: 4px;
+}
+
 nav .chartOption {
     text-transform: uppercase;
 }
 
-legend {}
+legend {
+    margin-left : 3em;
+}
 
 legend > div {
    display: inline-block;
    margin-right : 40px;
+}
+
+legend > div > * {
+    margin-right: 1em;
 }
 
 legend .legend-block{
@@ -104,7 +135,7 @@ legend .legend-title {
 	display: inline-block;
 	margin: 20px 40px;
 	padding: 30px;
-	border: whitesmoke 1px solid;
+	border: lightgrey 1px solid;
 	border-radius: 8px;
 	-webkit-box-shadow: lightgrey 0.4em 0.3em;
 }
