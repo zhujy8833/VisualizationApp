@@ -100,13 +100,19 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
 			render : function(){
 				var view = this;
 				$("#container").html(view.$el);
+                var styleOpt = {
+                    width : $("#main").width() * 0.3,
+                    height : $("#main").height() * 0.65
+                };
+
 				if(view.chartOption != 'both') {
-					view.$el.html(Mustache.render(template, {}));
+					view.$el.html(Mustache.render(template, styleOpt));
 				} else {
 					view.$el.html("")
-							.append(Mustache.render(template, {choice : "line"}))
-						    .append(Mustache.render(template, {choice : "bar" }));
+							.append(Mustache.render(template, $.extend({choice : "line"}, styleOpt)))
+						    .append(Mustache.render(template, $.extend({choice : "bar" }, styleOpt)));
 				}
+
 				return view;
 			}
 		});

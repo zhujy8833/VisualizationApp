@@ -21,6 +21,10 @@ a {
     width: 85%;
 }
 
+#main {
+    width: 100%;
+    min-height: 550px;
+}
 button {
     background: #f5f6f6; /* Old browsers */
     background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 90%, #f5f6f6 75%); /* FF3.6+ */

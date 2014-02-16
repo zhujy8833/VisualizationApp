@@ -21,9 +21,12 @@
 
 });
 require(['jquery'], function($){
-//    $.fn.slideIn = function(options) {
-//        return this.each(function())
-//    }
+    $(function(){
+        $(window).resize(function(){
+            $(".myChart").width($("#main").width() * 0.3);
+            $(".myChart").height($("#main").height() * 0.65);
+        })
+    });
 });
 
 require(["backbone","jquery","routers/main_router"], function(Backbone, $, MainRouter){
