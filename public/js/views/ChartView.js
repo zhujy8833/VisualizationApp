@@ -102,7 +102,7 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
 				$("#container").html(view.$el);
                 var styleOpt = {
                     width : $("#main").width() * 0.3,
-                    height : $("#main").height() * 0.65
+                    height : $("#main").height() * 0.55
                 };
 
 				if(view.chartOption != 'both') {

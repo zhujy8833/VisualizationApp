@@ -22,9 +22,9 @@
 });
 require(['jquery'], function($){
     $(function(){
-        $(window).resize(function(){
+        $(window).on("resize orientationchange", function(){
             $(".myChart").width($("#main").width() * 0.3);
-            $(".myChart").height($("#main").height() * 0.65);
+            //$(".myChart").height($("#main").height() * 0.65);
         })
     });
 });
