@@ -26,7 +26,7 @@ var getByFields = function(fields) {
 }
 
 exports.index = function(req, res){
-    res.render('index');
+    res.render('index',{title: "Visualization"});
 };
 
 exports.allUnsold = function(req, res) {
@@ -39,10 +39,12 @@ exports.allSold = function(req, res){
 
 exports.getFlower = function(req, res) {
 	var name = req.param('name');
-	var soldOrUnsold = req.param('sold') || "sold";
-	var sold = soldOrUnsold === "sold" ? true : false;
-	
-	
-
-	res.json(getByFields(["flower", "quantity-sold"]));
+	var output = [];
+    for (var i = 0; i < data.length; i++) {
+        var eachObj = data[i];
+        if(eachObj.flower === name) {
+            output.push(eachObj);
+        }
+    }
+    res.json(output);
 }

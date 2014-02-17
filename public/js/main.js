@@ -29,10 +29,7 @@ require(['jquery'], function($){
     });
 });
 
-require(["backbone","jquery","routers/main_router"], function(Backbone, $, MainRouter){
-    //TODO make chart choices as router flow, store the current chart choice in cookie or localstorage
-    //Add a dropdown to allow changing chart choices
+require(["backbone","jquery","routers/main_router", "routers/individual_router"], function(Backbone, $, MainRouter, IndividualRouter){
 	var router = new MainRouter();
-
 	Backbone.history.start();
 });

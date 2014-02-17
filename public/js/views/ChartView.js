@@ -31,13 +31,12 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
 			initialize: function(options) {
 				var view = this;
                 var target;
-
-				view.render();
                 view.data = options.data || [];
+                view.router = options.router;
                 view.chartOption = options.chartOption || "line";
                 view.render();
                 view.renderVisualization();
-
+                $("h1.title").html(options.title || "");
 			}, 
             renderVisualization : function() {
                 var view = this;
@@ -99,7 +98,10 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/c
             },
 			render : function(){
 				var view = this;
-				$("#container").html(view.$el);
+				$("#container").html(view.$el).append('<div class="navigate next"></div>');
+                $("#container .navigate").on("click", function(){
+                    view.router.navigate("flower", {trigger: true});
+                });
                 var styleOpt = {
                     width : $("#main").width() * 0.3,
                     height : $("#main").height() * 0.55
