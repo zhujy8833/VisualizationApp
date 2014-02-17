@@ -18,7 +18,9 @@ define(['chart','jquery',"underscore"],function(ChartLib, $, _){
         var chart = new Chart(that.ctx).Line(that.outputData, {
             scaleOverride : true,
             scaleSteps : 14,
-            scaleStepWidth : 5
+            scaleStepWidth : 5,
+            pointDotStrokeWidth : 2,
+            pointDotRadius : 1.5
         });
 
         return chart;
