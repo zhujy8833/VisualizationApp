@@ -1,13 +1,11 @@
 <div>
     <nav class="top">
-        <!--<div><span class="chartOption">{{chartOption}}</span></div>-->
-        <div class="button-group sold-field-btn">
-            <button class="sub-button active see-sold" data-field="sold">
-                <span>Sold</span>
+        <div class="button-group field-btn">
+            {{#fields}}
+            <button class="sub-button {{#active}}active{{/active}} see-{{name}}" data-field="{{name}}">
+                <span>{{name}}</span>
             </button>
-            <button class="sub-button see-unsold" data-field="unsold">
-                <span>Unsold</span>
-            </button>
+            {{/fields}}
         </div>
         <select id="chart-choice">
             <option value="line">Line</option>

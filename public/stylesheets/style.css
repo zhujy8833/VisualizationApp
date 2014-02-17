@@ -15,7 +15,11 @@ background-repeat: no-repeat;
 a {
   color: #00B7FF;
 }
-
+.title {
+    margin: 0px auto 36px auto;
+    width: 40%;
+    text-align: center;
+}
 .topBar {
     margin: 0 auto;
     width: 85%;
@@ -87,18 +91,26 @@ button:last-child {
 	left : -4px;
 }
 
+button:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    /*border-left: gray 1px solid;*/
+    left : -4px;
+}
+
 button:first-child.active {
-    border-right: black 2px inset;
+    border-right: black 3px inset;
 }
 
 button:last-child.active {
-    border-left: black 2px inset;
+    border-left: black 3px inset;
 }
 
 button span {
     color: whitesmoke;
     text-shadow: black 0.1em 0.1em 0.2em;
     font-size: 1.4em;
+    text-transform: capitalize;
 }
 button.active span {
 	color : black;
@@ -148,4 +160,33 @@ legend .legend-title {
 	border: lightgrey 1px solid;
 	border-radius: 8px;
 	-webkit-box-shadow: lightgrey 0.4em 0.3em;
+}
+
+.navigate {
+    min-height: 550px;
+    width: 40px;
+    position: absolute;
+    top: 40px;
+    cursor: pointer;
+    opacity: 0.1;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+}
+
+.navigate:hover {
+    opacity: 1
+}
+
+.navigate.next{
+    background: lightgrey url("../images/big-right-arrow.png") no-repeat 0px;
+    background-size: contain;
+    right: 17px;
+
+}
+
+.navigate.previous{
+    background: lightgrey url("../images/big-right-arrow.png") no-repeat 0px;
+    background-size: contain;
+    -webkit-transform : scaleX(-1);
+    left: 17px;
 }

@@ -7,13 +7,13 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/b
                 "change #chart-choice" : "changeChart",
                 "click .sub-button" : "toggleTopBtn"
             },
+
             initialize : function(options) {
                 var view = this;
                 view.router = options.router;
-                view.chartOption = options.chartOption || "line";
-                view.soldOption = options.soldOption || "sold";
+                view.chartOption = view.chartOption || "line";
+                view.soldOption = view.soldOption || "sold";
                 view.render();
-
             },
 
             toggleTopBtn : function(e){
@@ -22,32 +22,23 @@ define(["backbone", "underscore", "jquery", "chart", "mustache","text!template/b
                 var sold = $(e.currentTarget).data('field');
                 btnGroup.find('.sub-button').removeClass('active');
                 $(e.currentTarget).addClass('active');
-                if(window.localStorage) {
-                    window.localStorage.setItem("sold", sold);
-                }
-                view.router.renderChartView();
+                view.soldOption = sold;
+                view.router.renderChartView({soldOption : view.soldOption, chartOption: view.chartOption});
             },
 
             changeChart: function(e){
                 var view = this;
                 var ele = e.currentTarget;
                 var choice = $(ele).val();
-                if(window.localStorage) {
-                    window.localStorage.setItem("chart", choice);
-                }
-                view.router.renderChartView();
+
+                view.chartOption = choice;
+                view.router.renderChartView({soldOption : view.soldOption, chartOption: view.chartOption});
             },
             render : function() {
                 var view = this;
-                $("#main").before(view.$el);
-
-                view.$el.html(Mustache.render(template, {chartOption : view.chartOption}));
-                _.each(view.$el.find("select#chart-choice option"), function(option){
-                	option.selected = $(option).val() == view.chartOption;
-                });
-
-                view.$el.find('.sold-field-btn button').removeClass('active');
-                view.$el.find('.sold-field-btn button[data-field=' +view.soldOption+']').addClass('active');
+                $("header").html(view.$el);
+                view.$el.html(Mustache.render(template, {fields: [{name : "sold", active : true}, {name : "unsold", active : false}]}));
+                view.$el.find("button:first").css({left : "2px"});
                 return view;
 
             }
