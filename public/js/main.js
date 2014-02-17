@@ -29,7 +29,7 @@ require(['jquery'], function($){
     });
 });
 
-require(["backbone","jquery","routers/main_router", "routers/individual_router"], function(Backbone, $, MainRouter, IndividualRouter){
+require(["backbone","jquery","routers/main_router"], function(Backbone, $, MainRouter){
 	var router = new MainRouter();
 	Backbone.history.start();
 });
